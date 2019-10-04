@@ -13,7 +13,27 @@ class Member
   end
 
   def save
+    sql = "INSERT INTO members
+    (first_name,last_name,address)
+    values
+    ($1,$2,$3) RETURNING id"
+    values = [@first_name,@last_name,@address]
+    @id = SqlRunner.run(sql,values)[0]['id']
+  end
 
+  def update
+    sql = "UPDATE members
+    SET (first_name,last_name,address) = ($1,$2,$3)
+    WHERE id = $4"
+    values = [@first_name, @last_name, @address, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete
+    sql = "DELETE FROM members
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
   end
 
 
