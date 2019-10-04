@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner')
+
 class Member
 
   attr_accessor(:first_name,:last_name,:address)
@@ -10,6 +12,9 @@ class Member
     @address = options['address']
   end
 
+  def save
+
+  end
 
 
 end
