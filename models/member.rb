@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner')
+require_relative('./gym_class')
+require_relative('./booking')
 
 class Member
 
