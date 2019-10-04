@@ -11,4 +11,12 @@ class Booking
     @gym_class_id = options['gym_class_id']
   end
 
+  def save()
+    sql = "INSERT INTO bookings
+    (member_id, gym_class_id)
+    VALUES
+    ($1,$2) RETURNING id"
+    values = [@member_id, @gym_class_id]
+    @id = SqlRunner.run(sql, values)[0]['id']
+  end
 end
