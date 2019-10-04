@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner')
+require_relative('./member')
+require_relative('./booking')
 
 class GymClass
 
@@ -34,6 +36,22 @@ class GymClass
     WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def members()
+    sql = "SELECT members.* FROM members
+    INNER JOIN bookings
+    ON members.id = bookings.member_id
+    WHERE bookings.gym_class_id = $1"
+    values = [@id]
+    return SqlRunner.run(sql, values).map { |member| Member.new(member) }
+  end
+
+  def bookings()
+    sql = "SELECT * FROM bookings
+    WHERE gym_class_id = $1"
+    values = [@id]
+    return SqlRunner.run(sql, values).map { |booking| Booking.new(booking) }
   end
 
   def self.all()
