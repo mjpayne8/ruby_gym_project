@@ -2,7 +2,7 @@ require("pg")
 
 class SqlRunner
 
-  def run(sql, values)
+  def run(sql, values = [])
     begin
       db.connect({dbname: 'gym', host: 'localhost'})
       db.prepare('query',sql)
