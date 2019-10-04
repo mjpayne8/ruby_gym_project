@@ -54,6 +54,12 @@ class GymClass
     return SqlRunner.run(sql, values).map { |booking| Booking.new(booking) }
   end
 
+  def cascade_delete()
+    bookings = bookings()
+    bookings.each { |booking| booking.delete() }
+    delete()
+  end
+
   def self.all()
     sql = "SELECT * FROM gym_classes"
     return SqlRunner.run(sql).map{ |gym_class| GymClass.new(gym_class) }
