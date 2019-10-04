@@ -40,4 +40,9 @@ class Booking
     return SqlRunner.run(sql).map { |booking| Booking.new(booking) }
   end
 
+  def self.delete_all()
+    sql = "DELETE FROM bookings"
+    SqlRunner.run(sql)
+  end
+
 end
