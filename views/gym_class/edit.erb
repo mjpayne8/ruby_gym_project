@@ -1,0 +1,12 @@
+<form action="/gym_classes/<%= @gym_class.id %>" method="post">
+  <label for="class-name">Class Name: </label>
+  <input type="text" name="class_name" id="class-name"
+    value="<%= @gym_class.class_name.capitalize() %>">
+  <label for="class-date">Date: </label>
+  <input type="date" name="class_date" id="class-date"
+    value="<%= @gym_class.class_date() %>">
+  <label for="class-time">Time: </label>
+  <input type="time" name="class_time" id="class-time"
+    value="<%= @gym_class.class_time %>">
+  <input type="submit" value="submit">
+</form>

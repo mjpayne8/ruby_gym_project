@@ -1,0 +1,7 @@
+<% @gym_classes.each do |gym_class| %>
+<a href="/gym_classes/<%= gym_class.id %>"><p>Class Name:  <%= gym_class.class_name.capitalize() %>
+  <% if @new_gym_class != nil && @new_gym_class.id() == gym_class.id() %>
+  !!NEW!!
+  <% end %> </p>
+<p>Date and Time: <%= gym_class.class_date() %> <%= gym_class.class_time %></p></a>
+<% end %>
