@@ -3,9 +3,11 @@ DROP TABLE gym_classes;
 DROP TABLE members;
 DROP TABLE memberships;
 
-CREATE TABLE memberships(
+CREATE TABLE memberships (
   id SERIAL8 PRIMARY KEY,
   type VARCHAR(255)
+  start_time TIME,
+  end_time TIME
 );
 
 CREATE TABLE members (
