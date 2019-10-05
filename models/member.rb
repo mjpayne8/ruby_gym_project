@@ -74,7 +74,7 @@ class Member
     sql = "SELECT * FROM members
     WHERE id = $1"
     values = [id]
-    return Member.new(SqlRunner(sql, values)[0])
+    return Member.new(SqlRunner.run(sql, values)[0])
   end
 
 end

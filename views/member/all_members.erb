@@ -1,8 +1,7 @@
 <% @members.each do |member| %>
-<p>First Name:  <%= member.first_name %>
-  <% if @new_member != nil && @new_member.id == member.id %>
+<a href="/members/<%= member.id %>"><p>Name:  <%= "#{member.first_name.capitalize()} #{member.last_name.capitalize()}" %>
+  <% if @new_member != nil && @new_member.id() == member.id() %>
   !!NEW!!
   <% end %> </p>
-<p>Last Name: <%= member.last_name %></p>
-<p>Address: <%= member.address %></p>
+<p>Membership Number: <%= member.id() %></p></a>
 <% end %>

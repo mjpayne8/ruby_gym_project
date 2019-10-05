@@ -20,17 +20,20 @@ get '/members' do
 end
 
 get '/members/:id' do
-
+  @member = Member.find(params[:id].to_i)
+  erb(:'./member/member')
 end
 
 get '/members/:id/edit' do
 
 end
 
-post 'members/:id' do
+post '/members/:id' do
 
 end
 
-post 'members/:id/delete' do
-
+post '/members/:id/delete' do
+  @member = Member.find(params[:id])
+  @member.cascade_delete()
+  redirect to "/members"
 end
