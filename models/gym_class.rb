@@ -16,9 +16,9 @@ class GymClass
 
   def save()
     sql = "INSERT INTO gym_classes
-    (class_name, class_date, class_date)
+    (class_name, class_date, class_time)
     VALUES
-    ($1,$2,$3,$4) RETURNING id"
+    ($1,$2,$3) RETURNING id"
     values = [@class_name, @class_date, @class_time]
     @id = SqlRunner.run(sql, values)[0]['id']
   end
