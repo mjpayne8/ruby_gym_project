@@ -17,12 +17,14 @@ class GymClass
   end
 
   def save()
-    sql = "INSERT INTO gym_classes
-    (class_name, class_date, class_time, duration, spaces)
-    VALUES
-    ($1,$2,$3,$4,$5) RETURNING id"
-    values = [@class_name, @class_date, @class_time, @duration, @spaces]
-    @id = SqlRunner.run(sql, values)[0]['id']
+    if spaces_remaining() > 0
+      sql = "INSERT INTO gym_classes
+      (class_name, class_date, class_time, duration, spaces)
+      VALUES
+      ($1,$2,$3,$4,$5) RETURNING id"
+      values = [@class_name, @class_date, @class_time, @duration, @spaces]
+      @id = SqlRunner.run(sql, values)[0]['id']
+    end
   end
 
   def update()
@@ -60,6 +62,10 @@ class GymClass
     bookings = bookings()
     bookings.each { |booking| booking.delete() }
     delete()
+  end
+
+  def spaces_remaining()
+    return @spaces - members().length()
   end
 
   def self.all()
