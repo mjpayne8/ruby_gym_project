@@ -61,7 +61,8 @@ class GymClass
   end
 
   def self.all()
-    sql = "SELECT * FROM gym_classes"
+    sql = "SELECT * FROM gym_classes
+    ORDER BY date ASC, time ASC"
     return SqlRunner.run(sql).map{ |gym_class| GymClass.new(gym_class) }
   end
 

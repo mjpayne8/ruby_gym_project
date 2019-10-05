@@ -7,8 +7,8 @@
 </form>
 <h1>Bookings</h1>
 <% @gym_class.members.each do |member|%>
-<p>First Name: <%= member.first_name.capitalize %></p>
+<a href="/members/<%= member.id %>"><p>First Name: <%= member.first_name.capitalize %></p>
 <p>Last Name: <%= member.last_name.capitalize %></p>
 <p>Address: <%= member.address %></p>
-<p>Membership No: <%= member.id %></p>
+<p>Membership No: <%= member.id %></p></a>
 <% end %>

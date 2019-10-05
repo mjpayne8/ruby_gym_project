@@ -11,13 +11,22 @@ class Booking
     @gym_class_id = options['gym_class_id']
   end
 
-  def save()
-    sql = "INSERT INTO bookings
-    (member_id, gym_class_id)
-    VALUES
-    ($1,$2) RETURNING id"
+  def exists?()
+    sql = "SELECT * FROM Bookings
+    WHERE member_id = $1 and gym_class_id = $2"
     values = [@member_id, @gym_class_id]
-    @id = SqlRunner.run(sql, values)[0]['id']
+    return SqlRunner.run(sql, values).empty?
+  end
+
+  def save()
+    if exists?()
+      sql = "INSERT INTO bookings
+      (member_id, gym_class_id)
+      VALUES
+      ($1,$2) RETURNING id"
+      values = [@member_id, @gym_class_id]
+      @id = SqlRunner.run(sql, values)[0]['id']
+    end
   end
 
   def update()
@@ -36,7 +45,8 @@ class Booking
   end
 
   def self.all()
-    sql = "SELECT * FROM bookings"
+    sql = "SELECT * FROM bookings
+    ORDER BY id"
     return SqlRunner.run(sql).map { |booking| Booking.new(booking) }
   end
 

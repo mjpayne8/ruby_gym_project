@@ -8,7 +8,7 @@
 </form>
 <h1>Bookings</h1>
 <% @member.gym_classes.each do |gym_class|%>
-<p>Class: <%= gym_class.class_name %></p>
+<a href="/gym_classes/<%= gym_class.id %>"><p>Class: <%= gym_class.class_name %></p>
 <p>Date: <%= gym_class.class_date %></p>
-<p>Time: <%= gym_class.class_time %></p>
+<p>Time: <%= gym_class.class_time %></p></a>
 <% end %>
