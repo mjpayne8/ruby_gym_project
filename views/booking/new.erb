@@ -1,0 +1,19 @@
+<form action="/bookings" method="post">
+  <label for="member">Member: </label>
+  <select name="member_id" id="member">
+    <% Member.all().each do |member| %>
+    <option value="<%= member.id %>">
+      <%= "#{member.first_name.capitalize()} - #{member.address()}" %>
+    </option>
+    <% end %>
+  </select>
+  <label for="class">Class: </label>
+  <select name="class_id" id="class">
+    <% GymClass.all().each do |gym_class| %>
+    <option value="<%= gym_class.id %>">
+    <%= "#{gym_class.class_name.capitalize()} - #{gym_class.class_date}, #{gym_class.class_time}" %>
+    </option>
+    <% end %>
+  </select>
+  <input type="submit" value="Make Booking">
+</form>

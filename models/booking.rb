@@ -15,7 +15,7 @@ class Booking
     sql = "SELECT * FROM Bookings
     WHERE member_id = $1 and gym_class_id = $2"
     values = [@member_id, @gym_class_id]
-    return SqlRunner.run(sql, values).empty?
+    return SqlRunner.run(sql, values).map { |booking| booking }.empty?
   end
 
   def save()

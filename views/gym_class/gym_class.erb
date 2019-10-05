@@ -1,6 +1,7 @@
 <p>Class Name: <%= @gym_class.class_name.capitalize() %></p>
 <p>Date: <%= @gym_class.class_date() %></p>
 <p>Time: <%= @gym_class.class_time %></p>
+<p>Duration: <%= @gym_class.duration %></p>
 <button type="button" name="Edit"><a href="/gym_classes/<%= @gym_class.id %>/edit">Edit</a></button>
 <form action="/gym_classes/<%= @gym_class.id %>/delete" method="post">
 <input type="submit" value="Delete">

@@ -4,7 +4,7 @@ require_relative('./booking')
 
 class GymClass
 
-  attr_accessor(:class_name, :class_date, :class_time)
+  attr_accessor(:class_name, :class_date, :class_time, :duration)
   attr_reader(:id)
 
   def initialize( options )
@@ -12,22 +12,23 @@ class GymClass
     @class_name = options['class_name']
     @class_date = options['class_date']
     @class_time = options['class_time']
+    @duration = options['duration'].to_i()
   end
 
   def save()
     sql = "INSERT INTO gym_classes
-    (class_name, class_date, class_time)
+    (class_name, class_date, class_time, duration)
     VALUES
-    ($1,$2,$3) RETURNING id"
-    values = [@class_name, @class_date, @class_time]
+    ($1,$2,$3,$4) RETURNING id"
+    values = [@class_name, @class_date, @class_time, @duration]
     @id = SqlRunner.run(sql, values)[0]['id']
   end
 
   def update()
     sql = "UPDATE gym_classes
-    SET (class_name, class_date, class_time) = ($1,$2,$3)
-    WHERE id = $4"
-    values = [@class_name, @class_date, @class_time, @id]
+    SET (class_name, class_date, class_time,duration) = ($1,$2,$3,$4)
+    WHERE id = $5"
+    values = [@class_name, @class_date, @class_time,@duration, @id]
     SqlRunner.run(sql,values)
   end
 
