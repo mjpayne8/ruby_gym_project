@@ -38,7 +38,7 @@ class Member
     SqlRunner.run(sql, values)
   end
 
-  def gym_clasees()
+  def gym_classes()
     sql = "SELECT gym_classes.* FROM gym_classes
     INNER JOIN bookings
     ON gym_classes.id = bookings.gym_class_id
