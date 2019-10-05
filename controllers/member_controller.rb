@@ -4,11 +4,14 @@ require_relative('../models/member')
 also_reload('../models/*')
 
 get '/members/new' do
-
+  erb(:'./member/new')
 end
 
 post '/members' do
-
+  @new_member = Member.new(params)
+  @new_member.save()
+  @members = Member.all()
+  erb(:'./member/all_members')
 end
 
 get '/members' do

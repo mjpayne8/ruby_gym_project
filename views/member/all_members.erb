@@ -1,5 +1,8 @@
 <% @members.each do |member| %>
-<p>First Name:  <%= member.first_name %></p>
+<p>First Name:  <%= member.first_name %>
+  <% if @new_member != nil && @new_member.id == member.id %>
+  !!NEW!!
+  <% end %> </p>
 <p>Last Name: <%= member.last_name %></p>
 <p>Address: <%= member.address %></p>
 <% end %>

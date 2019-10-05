@@ -2,9 +2,9 @@ require_relative('../models/gym_class')
 require_relative('../models/member')
 require_relative('../models/booking')
 
+Booking.delete_all()
 GymClass.delete_all()
 Member.delete_all()
-Booking.delete_all()
 
 gym_class1 = GymClass.new({'class_name'=>'yoga', 'class_date'=>'2019-10-12','class_time'=>'20:00'})
 gym_class2 = GymClass.new({'class_name'=>'spin', 'class_date'=>'2019-10-13','class_time'=>'10:00'})
