@@ -13,22 +13,23 @@ class GymClass
     @class_date = options['class_date']
     @class_time = options['class_time']
     @duration = options['duration'].to_i()
+    @spaces = options['spaces'].to_i()
   end
 
   def save()
     sql = "INSERT INTO gym_classes
-    (class_name, class_date, class_time, duration)
+    (class_name, class_date, class_time, duration, spaces)
     VALUES
-    ($1,$2,$3,$4) RETURNING id"
-    values = [@class_name, @class_date, @class_time, @duration]
+    ($1,$2,$3,$4,$5) RETURNING id"
+    values = [@class_name, @class_date, @class_time, @duration, @spaces]
     @id = SqlRunner.run(sql, values)[0]['id']
   end
 
   def update()
     sql = "UPDATE gym_classes
-    SET (class_name, class_date, class_time,duration) = ($1,$2,$3,$4)
-    WHERE id = $5"
-    values = [@class_name, @class_date, @class_time,@duration, @id]
+    SET (class_name, class_date, class_time, duration, spaces) = ($1,$2,$3,$4,$5)
+    WHERE id = $6"
+    values = [@class_name, @class_date, @class_time, @duration, @spaces, @id]
     SqlRunner.run(sql,values)
   end
 

@@ -6,11 +6,31 @@ Booking.delete_all()
 GymClass.delete_all()
 Member.delete_all()
 
-gym_class1 = GymClass.new({'class_name'=>'yoga', 'class_date'=>'2019-10-12','class_time'=>'20:00','duration'=>60})
-gym_class2 = GymClass.new({'class_name'=>'spin', 'class_date'=>'2019-10-13','class_time'=>'10:00','duration'=>30})
-gym_class3 = GymClass.new({'class_name'=>'body pump', 'class_date'=>'2019-10-14','class_time'=>'11:00','duration'=>60})
-gym_class4 = GymClass.new({'class_name'=>'aerobics', 'class_date'=>'2019-10-15','class_time'=>'14:00','duration'=>30})
-gym_class5 = GymClass.new({'class_name'=>'insanity', 'class_date'=>'2019-10-16','class_time'=>'16:00','duration'=>60})
+gym_class1 = GymClass.new({'class_name'=>'yoga',
+  'class_date'=>'2019-10-12',
+  'class_time'=>'20:00',
+  'duration'=>60,
+  'spaces'=>6})
+gym_class2 = GymClass.new({'class_name'=>'spin',
+  'class_date'=>'2019-10-13',
+  'class_time'=>'10:00',
+  'duration'=>30,
+  'spaces'=>6})
+gym_class3 = GymClass.new({'class_name'=>'body pump',
+  'class_date'=>'2019-10-14',
+  'class_time'=>'11:00',
+  'duration'=>60,
+  'spaces'=>6})
+gym_class4 = GymClass.new({'class_name'=>'aerobics',
+  'class_date'=>'2019-10-15',
+  'class_time'=>'14:00',
+  'duration'=>30,
+  'spaces'=>6})
+gym_class5 = GymClass.new({'class_name'=>'insanity',
+  'class_date'=>'2019-10-16',
+  'class_time'=>'16:00',
+  'duration'=>60,
+  'spaces'=>1})
 gym_class1.save()
 gym_class2.save()
 gym_class3.save()
