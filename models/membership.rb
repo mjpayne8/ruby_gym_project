@@ -21,4 +21,10 @@ class Membership
     @id = SqlRunner.run(sql, values)[0]['id']
   end
 
+  def self.all()
+    sql = "SELECT * FROM memberships"
+    return SqlRunner.run(sql).map { |membership| Membership.new(membership) }
+
+  end
+
 end

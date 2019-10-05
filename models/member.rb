@@ -60,6 +60,13 @@ class Member
     delete()
   end
 
+  def membership()
+    sql = "SELECT * FROM membership
+    WHERE id = $1"
+    values = [@membership_id]
+    return Membership.new(SqlRunner.run(sql,values)[0])
+  end
+
   def self.all()
     sql = "SELECT * FROM members
     ORDER BY id DESC"
