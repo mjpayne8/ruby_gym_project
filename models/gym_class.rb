@@ -4,7 +4,7 @@ require_relative('./booking')
 
 class GymClass
 
-  attr_accessor(:class_name, :class_date, :class_time, :duration)
+  attr_accessor(:class_name, :class_date, :class_time, :duration, :spaces)
   attr_reader(:id)
 
   def initialize( options )

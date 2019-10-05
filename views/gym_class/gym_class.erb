@@ -1,15 +1,16 @@
 <p>Class Name: <%= @gym_class.class_name.capitalize() %></p>
 <p>Date: <%= @gym_class.class_date() %></p>
-<p>Time: <%= @gym_class.class_time %></p>
-<p>Duration: <%= @gym_class.duration %></p>
+<p>Time: <%= @gym_class.class_time() %></p>
+<p>Duration: <%= @gym_class.duration() %></p>
+<p>Spaces Remaining: <%= @gym_class.spaces_remaining() %></p>
 <button type="button" name="Edit"><a href="/gym_classes/<%= @gym_class.id %>/edit">Edit</a></button>
 <form action="/gym_classes/<%= @gym_class.id %>/delete" method="post">
 <input type="submit" value="Delete">
 </form>
 <h1>Bookings</h1>
 <% @gym_class.members.each do |member|%>
-<a href="/members/<%= member.id %>"><p>First Name: <%= member.first_name.capitalize %></p>
-<p>Last Name: <%= member.last_name.capitalize %></p>
-<p>Address: <%= member.address %></p>
-<p>Membership No: <%= member.id %></p></a>
+<a href="/members/<%= member.id() %>"><p>First Name: <%= member.first_name.capitalize() %></p>
+<p>Last Name: <%= member.last_name.capitalize() %></p>
+<p>Address: <%= member.address() %></p>
+<p>Membership No: <%= member.id() %></p></a>
 <% end %>
