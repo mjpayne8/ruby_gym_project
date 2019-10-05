@@ -1,12 +1,19 @@
 DROP TABLE bookings;
 DROP TABLE gym_classes;
 DROP TABLE members;
+DROP TABLE memberships;
+
+CREATE TABLE memberships(
+  id SERIAL8 PRIMARY KEY,
+  type VARCHAR(255)
+);
 
 CREATE TABLE members (
   id SERIAL8 PRIMARY KEY,
   first_name VARCHAR(255),
   last_name VARCHAR(255),
-  address TEXT
+  address TEXT,
+  membership_id INT8 REFERENCES memberships(id)
 );
 
 CREATE TABLE gym_classes (
