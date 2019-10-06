@@ -1,6 +1,7 @@
 require_relative('../db/sql_runner')
 require_relative('./gym_class')
 require_relative('./booking')
+require_relative('./membership')
 
 class Member
 
@@ -62,7 +63,7 @@ class Member
   end
 
   def membership()
-    sql = "SELECT * FROM membership
+    sql = "SELECT * FROM memberships 
     WHERE id = $1"
     values = [@membership_id]
     return Membership.new(SqlRunner.run(sql,values)[0])

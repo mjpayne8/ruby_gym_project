@@ -1,7 +1,7 @@
 <p>First Name: <%= @member.first_name.capitalize %></p>
 <p>Last Name: <%= @member.last_name.capitalize %></p>
 <p>Address: <%= @member.address %></p>
-<p>Membership Type<%= member.membership.type %></p>
+<p>Membership Type<%= @member.membership.type %></p>
 <p>Membership No: <%= @member.id %></p>
 <button type="button" name="Edit"><a href="/members/<%= @member.id %>/edit">Edit</a></button>
 <form action="/members/<%= @member.id %>/delete" method="post">
