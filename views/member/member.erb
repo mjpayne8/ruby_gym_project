@@ -1,7 +1,7 @@
 <p>First Name: <%= @member.first_name.capitalize %></p>
 <p>Last Name: <%= @member.last_name.capitalize %></p>
 <p>Address: <%= @member.address %></p>
-<p>Membership Type<%= @member.membership.type %></p>
+<p>Membership Type: <%= @member.membership.type %></p>
 <p>Membership No: <%= @member.id %></p>
 <button type="button" name="Edit"><a href="/members/<%= @member.id %>/edit">Edit</a></button>
 <form action="/members/<%= @member.id %>/delete" method="post">
@@ -13,7 +13,7 @@
 <p>Date: <%= gym_class.class_date %></p>
 <p>Time: <%= gym_class.class_time %></p>
 <p>Duration: <%= gym_class.duration %></p></a>
-<form action="/bookings/<%= Bookings.find_by_foreign_keys(@member.id,gym_class.id).id() %>/delete" method="post">
-  <input type="submit" value="Delete">
+<form action="/bookings/<%= Booking.find_by_foreign_keys(@member.id,gym_class.id).id() %>/delete" method="post">
+  <input type="submit" value="Cancel Booking">
 </form>
 <% end %>
