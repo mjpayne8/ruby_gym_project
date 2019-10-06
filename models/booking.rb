@@ -9,8 +9,8 @@ class Booking
 
   def initialize( options )
     @id = options['id'] if options['id']
-    @member_id = options['member_id']
-    @gym_class_id = options['gym_class_id']
+    @member_id = options['member_id'].to_i
+    @gym_class_id = options['gym_class_id'].to_i
   end
 
   def exists?()
@@ -21,14 +21,22 @@ class Booking
   end
 
   def save()
-    if exists?()
-      sql = "INSERT INTO bookings
-      (member_id, gym_class_id)
-      VALUES
-      ($1,$2) RETURNING id"
-      values = [@member_id, @gym_class_id]
-      @id = SqlRunner.run(sql, values)[0]['id']
+    if gym_class.class_time > member.membership.start_time && gym_class.class_time < member.membership.end_time
+      if gym_class.spaces_remaining() > 0
+        if exists?()
+          sql = "INSERT INTO bookings
+          (member_id, gym_class_id)
+          VALUES
+          ($1,$2) RETURNING id"
+          values = [@member_id, @gym_class_id]
+          @id = SqlRunner.run(sql, values)[0]['id']
+          return "Booking Successful"
+        end
+        return "Booking Already Exists"
+      end
+      return "No More Spaces - Booking Failed"
     end
+    return "Class is oustide Membership hours - Booking Failed"
   end
 
   def update()
@@ -50,14 +58,14 @@ class Booking
     sql = "SELECT * FROM gym_classes
     WHERE id = $1"
     values = [@gym_class_id]
-    return GymClass.new(SqlRunner(sql,values)[0])
+    return GymClass.new(SqlRunner.run(sql,values)[0])
   end
 
-  def mamber()
+  def member()
     sql = "SELECT * FROM members
     WHERE id = $1"
     values = [@member_id]
-    return Member.new(SqlRunner(sql,values)[0])
+    return Member.new(SqlRunner.run(sql,values)[0])
   end
 
   def self.all()
