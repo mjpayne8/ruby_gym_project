@@ -24,7 +24,6 @@ class Membership
   def self.all()
     sql = "SELECT * FROM memberships"
     return SqlRunner.run(sql).map { |membership| Membership.new(membership) }
-
   end
 
 end

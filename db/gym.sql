@@ -5,7 +5,7 @@ DROP TABLE memberships;
 
 CREATE TABLE memberships (
   id SERIAL8 PRIMARY KEY,
-  type VARCHAR(255)
+  type VARCHAR(255),
   start_time TIME,
   end_time TIME
 );

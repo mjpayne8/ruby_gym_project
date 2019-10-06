@@ -12,22 +12,23 @@ class Member
     @first_name = options['first_name']
     @last_name = options['last_name']
     @address = options['address']
+    @membership_id = options['membership_id']
   end
 
   def save()
     sql = "INSERT INTO members
-    (first_name,last_name,address)
+    (first_name,last_name,address,membership_id)
     values
-    ($1,$2,$3) RETURNING id"
-    values = [@first_name,@last_name,@address]
+    ($1,$2,$3,$4) RETURNING id"
+    values = [@first_name,@last_name,@address,@membership_id]
     @id = SqlRunner.run(sql,values)[0]['id']
   end
 
   def update()
     sql = "UPDATE members
-    SET (first_name,last_name,address) = ($1,$2,$3)
+    SET (first_name,last_name,address,@membership_id) = ($1,$2,$3)
     WHERE id = $4"
-    values = [@first_name, @last_name, @address, @id]
+    values = [@first_name, @last_name, @address, @membership_id, @id]
     SqlRunner.run(sql, values)
   end
 
