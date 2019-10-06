@@ -79,7 +79,7 @@ class Booking
     SqlRunner.run(sql)
   end
 
-  def self.find_by_foriegn_keys(member_id, gym_class_id)
+  def self.find_by_foreign_keys(member_id, gym_class_id)
     sql = "SELECT * FROM bookings
     WHERE member_id = $1 AND gym_class_id = $2"
     values = [member_id, gym_class_id]

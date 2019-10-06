@@ -5,7 +5,7 @@
 <p>Membership No: <%= @member.id %></p>
 <button type="button" name="Edit"><a href="/members/<%= @member.id %>/edit">Edit</a></button>
 <form action="/members/<%= @member.id %>/delete" method="post">
-<input type="submit" value="Delete">
+  <input type="submit" value="Delete">
 </form>
 <h1>Bookings</h1>
 <% @member.gym_classes.each do |gym_class|%>
@@ -13,4 +13,7 @@
 <p>Date: <%= gym_class.class_date %></p>
 <p>Time: <%= gym_class.class_time %></p>
 <p>Duration: <%= gym_class.duration %></p></a>
+<form action="/bookings/<%= Bookings.find_by_foreign_keys(@member.id,gym_class.id).id() %>/delete" method="post">
+  <input type="submit" value="Delete">
+</form>
 <% end %>

@@ -14,7 +14,7 @@ post '/bookings' do
 end
 
 post '/bookings/:id/delete' do
-  @booking = Booking.find(params[:id])
-  @booking.delete()
-  redirect to "/gym_classes/" + @booking.gym_class_id.to_s()
+  booking = Booking.find(params[:id])
+  booking.delete()
+  redirect to "/gym_classes/" + booking.gym_class_id.to_s()
 end
