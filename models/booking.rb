@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner')
+require_relative('./gym_class')
+require_relative('./member')
 
 class Booking
 
@@ -42,6 +44,20 @@ class Booking
     WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def gym_class()
+    sql = "SELECT * FROM gym_classes
+    WHERE id = $1"
+    values = [@gym_class_id]
+    return GymClass.new(SqlRunner(sql,values)[0])
+  end
+
+  def mamber()
+    sql = "SELECT * FROM members
+    WHERE id = $1"
+    values = [@member_id]
+    return Member.new(SqlRunner(sql,values)[0])
   end
 
   def self.all()
