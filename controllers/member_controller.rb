@@ -36,7 +36,7 @@ post '/members/:id' do
 end
 
 post '/members/:id/delete' do
-  @member = Member.find(params[:id])
-  @member.cascade_delete()
+  member = Member.find(params[:id])
+  member.cascade_delete()
   redirect to "/members"
 end

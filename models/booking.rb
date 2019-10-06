@@ -79,4 +79,18 @@ class Booking
     SqlRunner.run(sql)
   end
 
+  def self.find_by_foriegn_keys(member_id, gym_class_id)
+    sql = "SELECT * FROM bookings
+    WHERE member_id = $1 AND gym_class_id = $2"
+    values = [member_id, gym_class_id]
+    return Booking.new(SqlRunner.run(sql,values)[0])
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM bookings
+    WHERE id = $1"
+    values = [id]
+    return Booking.new(SqlRunner.run(sql,values)[0])
+  end
+
 end
