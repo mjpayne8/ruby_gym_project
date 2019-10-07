@@ -6,6 +6,7 @@ require_relative('../models/membership')
 Booking.delete_all()
 GymClass.delete_all()
 Member.delete_all()
+Membership.delete_all()
 
 gym_class1 = GymClass.new({'class_name'=>'yoga',
   'class_date'=>'2019-10-12',

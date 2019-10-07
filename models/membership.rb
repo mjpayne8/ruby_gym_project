@@ -21,9 +21,20 @@ class Membership
     @id = SqlRunner.run(sql, values)[0]['id']
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM memberships
+    WHERE id = $1"
+    values = [id]
+    return Membership.new(SqlRunner.run(sql,values)[0])
+  end
+
   def self.all()
     sql = "SELECT * FROM memberships"
     return SqlRunner.run(sql).map { |membership| Membership.new(membership) }
   end
 
+  def self.delete_all()
+    sql = "DELETE FROM memberships"
+    SqlRunner.run(sql)
+  end
 end

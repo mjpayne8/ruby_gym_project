@@ -1,0 +1,4 @@
+<% @memberships.each do |membership| %>
+<a href="/memberships/<%= membership.id %>"><p>Type:  <%= membership.type.capitalize() %>
+</a>
+<% end %>
