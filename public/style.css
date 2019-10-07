@@ -22,9 +22,15 @@ nav ul li {
 }
 
 .main--link {
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
   display: inline-block;
   background-color: black;
   padding: 40px;
+}
+
+.main--link p {
+  color: white;
 }
 
 .center {
@@ -32,8 +38,15 @@ nav ul li {
 }
 
 .big--box {
+  display: inline;
   width: 100px;
   height: 100px;
-  font-size: 100px;
-  display: block;
+  font-size: 50px;
+}
+
+.flex {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
 }
