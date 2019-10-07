@@ -22,6 +22,14 @@ class Membership
     @id = SqlRunner.run(sql, values)[0]['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE memberships
+    SET (type, start_time, end_time) = ($1, $2, $3)
+    WHERE id = $4"
+    values = [@type, @start_time, @end_time, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def members()
     sql = "SELECT * FROM members
     WHERE membership_id = $1"

@@ -10,6 +10,16 @@ end
 
 get '/memberships/:id' do
   @membership = Membership.find(params[:id])
-  @members = []
+  erb(:'./membership/membership')
+end
+
+get '/memberships/:id/edit' do
+  @membership = Membership.find(params[:id])
+  erb(:'./membership/edit')
+end
+
+post '/memberships/:id' do
+  @membership = Membership.new(params)
+  @membership.update()
   erb(:'./membership/membership')
 end
