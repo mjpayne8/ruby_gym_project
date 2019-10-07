@@ -1,0 +1,39 @@
+nav {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+a:link {
+  color: white;
+  text-decoration: none;
+  background-color: black;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
+  background-color: black;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.main--link {
+  display: inline-block;
+  background-color: black;
+  padding: 40px;
+}
+
+.center {
+  text-align: center;
+}
+
+.big--box {
+  width: 100px;
+  height: 100px;
+  font-size: 100px;
+  display: block;
+}

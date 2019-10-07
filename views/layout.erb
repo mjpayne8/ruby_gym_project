@@ -3,18 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Gymatic</title>
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/members">Members</a></li>
-        <li><a href="/members/new">Add Member</a></li>
-        <li><a href="/gym_classes">Classes</a></li>
-        <li><a href="/gym_classes/new">Add Class</a></li>
-        <li><a href="/bookings/new">New Booking</a></li>
-      </ul>
-    </nav>
-    <%= yield %>
+    <main>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/members">Members</a></li>
+          <li><a href="/members/new">Add Member</a></li>
+          <li><a href="/gym_classes">Classes</a></li>
+          <li><a href="/gym_classes/new">Add Class</a></li>
+          <li><a href="/bookings/new">New Booking</a></li>
+          <li><a href="/memberships">Membership Types</a></li>
+          <li><a href="/memberships/new">New Membership Type</a></li>
+        </ul>
+      </nav>
+      <%= yield %>
+    </main>
   </body>
 </html>
