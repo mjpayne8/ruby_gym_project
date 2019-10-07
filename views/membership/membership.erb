@@ -4,7 +4,7 @@
 <button type="button" name="Edit"><a href="/memberships/<%= @membership.id %>/edit">Edit</a></button>
 <h1>Members</h1>
 <% @membership.members.each do |member|%>
-<div class="main--link"
+<div class="main--link">
 <a href="/members/<%= member.id() %>"><p>First Name: <%= member.first_name.capitalize() %></p>
   <p>Last Name: <%= member.last_name.capitalize() %></p>
   <p>Address: <%= member.address() %></p>

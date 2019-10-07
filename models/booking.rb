@@ -21,8 +21,8 @@ class Booking
   end
 
   def save()
-    return "Class is oustide Membership hours - Booking Failed" if !within_membership_time?()
-    return "No More Spaces - Booking Failed"  if !spaces
+    return "Class is outside Membership hours - Booking Failed" if !within_membership_time?()
+    return "No More Spaces - Booking Failed"  if !spaces?()
     return "Booking Already Exists" if !does_not_exist?()
     sql = "INSERT INTO bookings
     (member_id, gym_class_id)
