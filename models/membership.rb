@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('./member')
 
 class Membership
 
@@ -6,7 +7,7 @@ class Membership
   attr_reader(:id)
 
   def initialize( options )
-    @id = options['id'] if options['id']
+    @id = options['id'].to_i if options['id']
     @type = options['type']
     @start_time = options['start_time']
     @end_time = options['end_time']
@@ -18,7 +19,14 @@ class Membership
     VALUES ($1,$2,$3)
     RETURNING id"
     values = [@type, @start_time, @end_time]
-    @id = SqlRunner.run(sql, values)[0]['id']
+    @id = SqlRunner.run(sql, values)[0]['id'].to_i
+  end
+
+  def members()
+    sql = "SELECT * FROM members
+    WHERE membership_id = $1"
+    values = [@id]
+    return SqlRunner.run(sql,values).map { |member| Member.new(member) }
   end
 
   def self.find(id)

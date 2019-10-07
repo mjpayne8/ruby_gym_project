@@ -1,0 +1,11 @@
+<p>Type: <%= @membership.type.capitalize() %></p>
+<p>Start Time: <%= @membership.start_time %></p>
+<p>End Time: <%= @membership.end_time() %></p>
+<button type="button" name="Edit"><a href=>Edit</a></button>
+<h1>Bookings</h1>
+<% @membership.members.each do |member|%>
+<a href="/members/<%= member.id() %>"><p>First Name: <%= member.first_name.capitalize() %></p>
+  <p>Last Name: <%= member.last_name.capitalize() %></p>
+  <p>Address: <%= member.address() %></p>
+  <p>Membership No: <%= member.id() %></p></a>
+<% end %>
