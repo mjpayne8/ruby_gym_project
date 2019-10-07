@@ -1,4 +1,8 @@
+<div class="center">
 <% @memberships.each do |membership| %>
+<div class="main--link flex">
 <a href="/memberships/<%= membership.id %>"><p>Type:  <%= membership.type.capitalize() %>
 </a>
+</div>
 <% end %>
+</div>
