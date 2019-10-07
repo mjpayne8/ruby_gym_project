@@ -9,6 +9,7 @@
 </form>
 <h1>Bookings</h1>
 <% @gym_class.members.each do |member|%>
+<div class="main--link"
 <a href="/members/<%= member.id() %>"><p>First Name: <%= member.first_name.capitalize() %></p>
 <p>Last Name: <%= member.last_name.capitalize() %></p>
 <p>Address: <%= member.address() %></p>
@@ -16,4 +17,5 @@
 <form action="/bookings/<%= Booking.find_by_foreign_keys(member.id,@gym_class.id).id() %>" method="post">
   <input type="submit" value="Cancel Booking">
 </form>
+</div>
 <% end %>
