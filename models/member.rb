@@ -56,14 +56,8 @@ class Member
     return SqlRunner.run(sql, values).map { |booking| Booking.new(booking) }
   end
 
-  def cascade_delete()
-    bookings = bookings()
-    bookings.each { |booking| booking.delete() }
-    delete()
-  end
-
   def membership()
-    sql = "SELECT * FROM memberships 
+    sql = "SELECT * FROM memberships
     WHERE id = $1"
     values = [@membership_id]
     return Membership.new(SqlRunner.run(sql,values)[0])

@@ -37,6 +37,6 @@ end
 
 post '/gym_classes/:id/delete' do
   gym_class = GymClass.find(params[:id])
-  gym_class.cascade_delete()
+  gym_class.delete()
   redirect to "/gym_classes"
 end

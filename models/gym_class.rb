@@ -58,12 +58,6 @@ class GymClass
     return SqlRunner.run(sql, values).map { |booking| Booking.new(booking) }
   end
 
-  def cascade_delete()
-    bookings = bookings()
-    bookings.each { |booking| booking.delete() }
-    delete()
-  end
-
   def spaces_remaining()
     return @spaces - members().length()
   end

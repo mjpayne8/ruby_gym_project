@@ -13,7 +13,7 @@ class Booking
     @gym_class_id = options['gym_class_id'].to_i
   end
 
-  def exists?()
+  def does_not_exist?()
     sql = "SELECT * FROM Bookings
     WHERE member_id = $1 and gym_class_id = $2"
     values = [@member_id, @gym_class_id]
@@ -21,22 +21,26 @@ class Booking
   end
 
   def save()
-    if gym_class.class_time > member.membership.start_time && gym_class.class_time < member.membership.end_time
-      if gym_class.spaces_remaining() > 0
-        if exists?()
-          sql = "INSERT INTO bookings
-          (member_id, gym_class_id)
-          VALUES
-          ($1,$2) RETURNING id"
-          values = [@member_id, @gym_class_id]
-          @id = SqlRunner.run(sql, values)[0]['id']
-          return "Booking Successful"
-        end
-        return "Booking Already Exists"
-      end
-      return "No More Spaces - Booking Failed"
-    end
-    return "Class is oustide Membership hours - Booking Failed"
+    return "Class is oustide Membership hours - Booking Failed" if !within_membership_time?()
+    return "No More Spaces - Booking Failed"  if !spaces
+    return "Booking Already Exists" if !does_not_exist?()
+    sql = "INSERT INTO bookings
+    (member_id, gym_class_id)
+    VALUES
+    ($1,$2) RETURNING id"
+    values = [@member_id, @gym_class_id]
+    @id = SqlRunner.run(sql, values)[0]['id']
+    return "Booking Successful"
+  end
+
+  def within_membership_time?()
+    after_start = gym_class.class_time > member.membership.start_time
+    before_end = gym_class.class_time < member.membership.end_time
+    return after_start && before_end
+  end
+
+  def spaces?
+    return gym_class.spaces_remaining() > 0
   end
 
   def update()
