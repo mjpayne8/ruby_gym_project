@@ -80,4 +80,12 @@ class GymClass
     return GymClass.new(SqlRunner.run(sql, values)[0])
   end
 
+  def self.get_next_7_dates()
+    sql = "SELECT class_date FROM gym_classes
+    WHERE class_date >= now()
+    ORDER BY class_date ASC
+    LIMIT 7"
+    return SqlRunner.run(sql).map { |date| date['class_date'] }
+  end
+
 end

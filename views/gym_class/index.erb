@@ -1,3 +1,11 @@
+<nav>
+  <ul>
+    <% @dates.each do |date|%>
+      <li><a href="/gym_classes/<%= date %>"><%= date %></a></li>
+    <% end %>
+  </ul>
+  </nav>
+
 <div class="center">
   <% @gym_classes.each do |gym_class| %>
   <div class="main--link flex">

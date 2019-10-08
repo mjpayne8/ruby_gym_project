@@ -15,6 +15,7 @@ post '/gym_classes' do
 end
 
 get '/gym_classes' do
+  @dates = GymClass.get_next_7_dates()
   @gym_classes = GymClass.all()
   erb(:'./gym_class/index')
 end
