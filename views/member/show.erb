@@ -1,3 +1,13 @@
+<% if @error_code !=nil %>
+  <strong>
+  <%= "Booking Successful" if @error_code == 0 %>
+  <%= "Outside Membership Daily Window - Booking Failed" if @error_code == 1 %>
+  <%= "No Spaces Available - Booking Failed" if @error_code == 2%>
+  <%= "Booking Already Exists" if @error_code == 3%>
+  <%= "Booking Already Exists" if @error_code == 4%>
+  </strong>
+<% end %>
+
 <p>First Name: <%= @member.first_name.capitalize %></p>
 <p>Last Name: <%= @member.last_name.capitalize %></p>
 <p>Address: <%= @member.address %></p>

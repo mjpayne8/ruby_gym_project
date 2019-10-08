@@ -1,10 +1,11 @@
 <div class="center">
   <% @members.each do |member| %>
   <div class="main--link flex">
-    <% if @new_member != nil && @new_member.id() == member.id() %>
-    <p>NEW</p>
-    <% end %>
-    <a href="/members/<%= member.id %>"><p>Name:  <%= "#{member.first_name.capitalize()} #{member.last_name.capitalize()}" %></p>
+    <a href="/members/<%= member.id %>">
+      <% if @new_member != nil && @new_member.id() == member.id() %>
+      <p>NEW  </p>
+      <% end %>
+      <p>Name:  <%= "#{member.first_name.capitalize()} #{member.last_name.capitalize()}" %></p>
       <p>Membership Type: <%= member.membership.type %></p>
       <p>Membership Number: <%= member.id() %></p></a>
     </div>

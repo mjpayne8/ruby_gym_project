@@ -21,16 +21,16 @@ class Booking
   end
 
   def save()
-    return "Class is outside Membership hours - Booking Failed" if !within_membership_time?()
-    return "No More Spaces - Booking Failed"  if !spaces?()
-    return "Booking Already Exists" if !does_not_exist?()
+    return 1 if !within_membership_time?()
+    return 2 if !spaces?()
+    return 3 if !does_not_exist?()
     sql = "INSERT INTO bookings
     (member_id, gym_class_id)
     VALUES
     ($1,$2) RETURNING id"
     values = [@member_id, @gym_class_id]
     @id = SqlRunner.run(sql, values)[0]['id']
-    return "Booking Successful"
+    return 0
   end
 
   def within_membership_time?()

@@ -40,3 +40,9 @@ post '/members/:id/delete' do
   member.delete()
   redirect to "/members"
 end
+
+get '/members/:id/:error_code' do
+  @error_code = params[:error_code].to_i
+  @member = Member.find(params[:id].to_i)
+  erb(:'./member/show')
+end

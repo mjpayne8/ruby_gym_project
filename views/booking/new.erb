@@ -3,7 +3,7 @@
   <select name="member_id" id="member">
     <% Member.all().each do |member| %>
     <option value="<%= member.id %>">
-      <%= "#{member.first_name.capitalize()} - #{member.address()}" %>
+      <%= "#{member.first_name.capitalize()} #{member.last_name.capitalize()} - #{member.address()}" %>
     </option>
     <% end %>
   </select>
