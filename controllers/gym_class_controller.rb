@@ -41,3 +41,9 @@ post '/gym_classes/:id/delete' do
   gym_class.delete()
   redirect to "/gym_classes"
 end
+
+get '/gym_classes/by_date/:date' do
+  @dates = GymClass.get_next_7_dates()
+  @gym_classes = GymClass.by_date(params[:date])
+  erb(:'./gym_class/index')
+end

@@ -88,4 +88,12 @@ class GymClass
     return SqlRunner.run(sql).map { |date| date['class_date'] }
   end
 
+  def self.by_date(date)
+    sql = "SELECT * FROM gym_classes
+    WHERE class_date = $1
+    ORDER BY class_time ASC"
+    values = [date]
+    return SqlRunner.run(sql,values).map { |gym_class| GymClass.new(gym_class)}
+  end
+
 end
