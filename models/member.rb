@@ -49,13 +49,6 @@ class Member
     return SqlRunner.run(sql, values).map { |gym_class| GymClass.new(gym_class) }
   end
 
-  # def bookings()
-  #   sql = "SELECT * from bookings
-  #   WHERE bookings.member_id = $1"
-  #   values = [@id]
-  #   return SqlRunner.run(sql, values).map { |booking| Booking.new(booking) }
-  # end
-
   def membership()
     sql = "SELECT * FROM memberships
     WHERE id = $1"

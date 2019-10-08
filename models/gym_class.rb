@@ -51,13 +51,6 @@ class GymClass
     return SqlRunner.run(sql, values).map { |member| Member.new(member) }
   end
 
-  def bookings()
-    sql = "SELECT * FROM bookings
-    WHERE gym_class_id = $1"
-    values = [@id]
-    return SqlRunner.run(sql, values).map { |booking| Booking.new(booking) }
-  end
-
   def spaces_remaining()
     return @spaces - members().length()
   end
