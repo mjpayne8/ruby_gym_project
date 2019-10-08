@@ -11,17 +11,17 @@ post '/members' do
   @new_member = Member.new(params)
   @new_member.save()
   @members = Member.all()
-  erb(:'./member/all_members')
+  erb(:'./member/index')
 end
 
 get '/members' do
   @members = Member.all()
-  erb(:'./member/all_members')
+  erb(:'./member/index')
 end
 
 get '/members/:id' do
   @member = Member.find(params[:id].to_i)
-  erb(:'./member/member')
+  erb(:'./member/show')
 end
 
 get '/members/:id/edit' do
@@ -32,11 +32,11 @@ end
 post '/members/:id' do
   @member = Member.new(params)
   @member.update()
-  erb(:'./member/member')
+  erb(:'./member/show')
 end
 
 post '/members/:id/delete' do
   member = Member.find(params[:id])
-  member.cascade_delete()
+  member.delete()
   redirect to "/members"
 end
