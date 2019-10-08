@@ -14,7 +14,7 @@
 <p>Last Name: <%= member.last_name.capitalize() %></p>
 <p>Address: <%= member.address() %></p>
 <p>Membership No: <%= member.id() %></p></a>
-<form action="/bookings/<%= Booking.find_by_foreign_keys(member.id,@gym_class.id).id() %>" method="post">
+<form action="/bookings/<%= Booking.find_by_foreign_keys(member.id(),@gym_class.id()).id() %>" method="post">
   <input type="submit" value="Cancel Booking">
 </form>
 </div>

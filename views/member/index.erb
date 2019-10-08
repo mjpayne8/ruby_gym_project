@@ -6,7 +6,7 @@
       <p>NEW  </p>
       <% end %>
       <p>Name:  <%= "#{member.first_name.capitalize()} #{member.last_name.capitalize()}" %></p>
-      <p>Membership Type: <%= member.membership.type %></p>
+      <p>Membership Type: <%= member.membership.type() %></p>
       <p>Membership Number: <%= member.id() %></p></a>
     </div>
     <% end %>

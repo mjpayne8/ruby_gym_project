@@ -10,7 +10,7 @@
   <label for="class">Class: </label>
   <select name="gym_class_id" id="class">
     <% GymClass.all().each do |gym_class| %>
-    <option value="<%= gym_class.id %>">
+    <option value="<%= gym_class.id() %>">
     <%= "#{gym_class.class_name.capitalize()} - #{gym_class.class_date}, #{gym_class.class_time}" %>
     </option>
     <% end %>

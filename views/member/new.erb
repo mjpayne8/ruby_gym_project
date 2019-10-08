@@ -8,7 +8,7 @@
   <label for="membership-type">Membership Type: </label>
   <select name="membership_id">
     <% Membership.all.each do |membership| %>
-    <option value = "<%= membership.id %>"><%= membership.type %></option>
+    <option value = "<%= membership.id() %>"><%= membership.type() %></option>
     <% end %>
   </select>
   <input type="submit" value="Sign-Up">
