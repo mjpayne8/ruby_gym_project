@@ -10,6 +10,7 @@ end
 post '/gym_classes' do
   @new_gym_class = GymClass.new(params)
   @new_gym_class.save()
+  @dates = GymClass.get_next_7_dates()
   @gym_classes = GymClass.all()
   erb(:'./gym_class/index')
 end

@@ -9,9 +9,6 @@
 <div class="center">
   <% @gym_classes.each do |gym_class| %>
   <div class="main--link flex">
-    <% if @new_gym_class != nil && @new_gym_class.id() == gym_class.id() %>
-    <p> NEW </p>
-    <% end %>
     <a href="/gym_classes/<%= gym_class.id %>">
       <% if @new_gym_class != nil && @new_gym_class.id() == gym_class.id() %>
         <p> NEW </p>
