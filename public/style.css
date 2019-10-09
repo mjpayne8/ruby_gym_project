@@ -1,3 +1,8 @@
+div h1 {
+  font-size: 200px;
+  margin: auto;
+}
+
 nav {
   background-color: black;
   color: white;
@@ -75,4 +80,14 @@ button a{
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
+}
+
+.back-img {
+  background-image: url('https://media.istockphoto.com/photos/gym-background-with-equipment-picture-id845970122?k=6&m=845970122&s=612x612&w=0&h=-las2BorgfNUXc84u3MrnOoztybpaGkxWTfGWZb1Cg8=');
+  background-repeat: no-repeat;
+  background-size: 1500px 500px;
+}
+
+.bigger{
+  font-size: 50px;
 }
