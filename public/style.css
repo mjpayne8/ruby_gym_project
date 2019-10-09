@@ -1,6 +1,5 @@
 * {
   font-family: 'Montserrat', sans-serif;
-  /* font-family: 'Cabin', sans-serif; */
 }
 
 div h1 {
@@ -58,6 +57,10 @@ button a:visited {
 nav ul li {
   display: inline-block;
   padding: 10px;
+  font-family: 'Cabin', sans-serif;
+}
+
+button {
   font-family: 'Cabin', sans-serif;
 }
 
